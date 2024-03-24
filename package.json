@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "preinstall": "nvm install 16.20.2",
+    "prestart": "nvm use 16.20.2"
   },
   "dependencies": {
     "js-cookie": "^2.2.1",
     "next": "10.0.7",
+    "nextjs-routes": "^2.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
