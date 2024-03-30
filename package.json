@@ -10,6 +10,8 @@
     "prestart": "nvm use 16.20.2"
   },
   "dependencies": {
+    "antd": "^5.15.4",
+    "dayjs": "^1.11.10",
     "js-cookie": "^2.2.1",
     "next": "10.0.7",
     "nextjs-routes": "^2.1.0",

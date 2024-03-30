@@ -1,0 +1,10 @@
+.calendarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+.calendar {
+    margin-top: 5.5rem;
+    height: 100%;
+}

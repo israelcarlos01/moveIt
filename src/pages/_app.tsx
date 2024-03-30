@@ -1,8 +1,12 @@
+import { Menu } from '../components/Menu';
 import '../styles/global.css';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <>
+      <Menu />
+      <Component {...pageProps} />
+    </>
   )
 }
 
