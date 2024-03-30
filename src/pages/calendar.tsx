@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Badge, Calendar as CalendarAnt } from 'antd';
+import { Badge, Calendar as CalendarAnt, Modal, Input } from 'antd';
 import dayjs from 'dayjs';
 import styles from '../styles/pages/Calendar.module.css';
 
@@ -74,16 +74,32 @@ const getMonthData = (value) => {
 };
 export default function Calendar() {
 
-    const [value, setValue] = useState(() => dayjs('2017-01-25'));
+  const [value, setValue] = useState(null);
   const [selectedValue, setSelectedValue] = useState(() => dayjs('2017-01-25'));
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    const formattedValue = {
+      content: value,
+      type: 'success',
+    }
+
+    dateCellRender({ value: selectedValue, selectedValue: formattedValue });
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   const onSelect = (newValue) => {
-    setValue(newValue);
+    // setValue(newValue);
     setSelectedValue(newValue);
-    
-    
-    console.log('value', value);
-    console.log('selectedValue', selectedValue);
+    showModal();
   };
 
   const monthCellRender = (value) => {
@@ -95,7 +111,7 @@ export default function Calendar() {
       </div>
     ) : null;
   };
-  const dateCellRender = (value) => {
+  const dateCellRender = ({value, selectedValue}) => {
     const listData = getListData(value);
     return (
       <ul className="events">
@@ -115,8 +131,13 @@ export default function Calendar() {
   };
 
   return (
-    <div className={styles.calendarContainer}>
+    <div className={styles.container}>
+      <div className={styles.calendarContainer}>
         <CalendarAnt className={styles.calendar} cellRender={cellRender} onSelect={onSelect} /> 
+      </div>
+      <Modal title="Marque um compromisso em sua agenda" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Input placeholder="Basic usage" onChange={setValue} />
+      </Modal>
     </div>
   );
 };

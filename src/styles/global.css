@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+#__next {
+   height: 100%;
+}
+
 :root {
     --white: #fff;
     --background: #f2f3f5;
@@ -30,9 +34,10 @@
     }
 }
 
-body {
+Html, body {
     background: #f2f3f5;
     color: #666;
+    height: 100%;
 }
 
 body, input, textarea, button {
